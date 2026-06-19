@@ -6,17 +6,20 @@ import SectionHeader from "../ui/SectionHeader.astro";
 
 <section
   id="contatti"
-  class="scroll-mt-24 bg-anchor-off-white px-5 py-20 md:px-8"
+  class="scroll-mt-24 overflow-x-clip bg-anchor-off-white px-4 py-16 sm:px-5 md:px-8 md:py-20"
   data-experience-theme-neighbor
 >
-  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-    <div>
+  <div
+    class="mx-auto grid w-full max-w-7xl min-w-0 gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
+  >
+    <div class="min-w-0">
       <SectionHeader
         eyebrow="Contatti"
         title="Richiedi un controllo tecnico"
-        description="Raccontaci che cosa serve alla tua barca: un primo contatto aiuta a capire priorita, urgenza e tipo di intervento."
+        description="Raccontaci che cosa serve alla tua barca: un primo contatto aiuta a capire priorità, urgenza e tipo di intervento."
       />
-      <div class="mt-8 flex flex-wrap gap-3">
+
+      <div class="mt-8 grid w-full gap-3 sm:flex sm:flex-wrap">
         {
           siteConfig.phoneHref && (
             <Button
@@ -26,6 +29,7 @@ import SectionHeader from "../ui/SectionHeader.astro";
             />
           )
         }
+
         {
           siteConfig.whatsappHref && (
             <Button
@@ -35,110 +39,139 @@ import SectionHeader from "../ui/SectionHeader.astro";
             />
           )
         }
+
         <Button
           href={`mailto:${siteConfig.email}`}
           label="Scrivi via email"
           variant="secondary"
         />
       </div>
-      <dl class="mt-10 space-y-5 text-sm">
-        <div>
+
+      <dl class="mt-10 min-w-0 space-y-5 text-sm">
+        <div class="min-w-0">
           <dt class="font-black text-anchor-navy">Telefono</dt>
-          <dd class="mt-1 text-anchor-steel-grey">
+          <dd class="mt-1 break-words text-anchor-steel-grey">
             {
               siteConfig.phoneHref ? (
-                <a href={siteConfig.phoneHref}>{siteConfig.phoneLabel}</a>
+                <a class="break-all" href={siteConfig.phoneHref}>
+                  {siteConfig.phoneLabel}
+                </a>
               ) : (
                 siteConfig.phoneLabel
               )
             }
           </dd>
         </div>
-        <div>
+
+        <div class="min-w-0">
           <dt class="font-black text-anchor-navy">Email</dt>
-          <dd class="mt-1 text-anchor-steel-grey">
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          <dd class="mt-1 break-words text-anchor-steel-grey">
+            <a class="break-all" href={`mailto:${siteConfig.email}`}>
+              {siteConfig.email}
+            </a>
           </dd>
         </div>
-        <div>
+
+        <div class="min-w-0">
           <dt class="font-black text-anchor-navy">Sede operativa</dt>
-          <dd class="mt-1 text-anchor-steel-grey">{siteConfig.location}</dd>
+          <dd class="mt-1 break-words text-anchor-steel-grey">
+            {siteConfig.location}
+          </dd>
         </div>
       </dl>
     </div>
 
     <form
-      class="rounded-anchor-lg border border-anchor-light-grey bg-anchor-white p-6 shadow-anchor md:p-8"
+      class="w-full min-w-0 max-w-full overflow-hidden rounded-anchor-lg border border-anchor-light-grey bg-anchor-white p-5 shadow-anchor sm:p-6 md:p-8"
       action={`mailto:${siteConfig.email}`}
       method="post"
       enctype="text/plain"
     >
-      <div class="grid gap-5 md:grid-cols-2">
-        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+      <div class="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-2">
+        <label class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy">
           Nome
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="name"
             autocomplete="name"
             required
           />
         </label>
-        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+
+        <label class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy">
           Telefono
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="phone"
             autocomplete="tel"
             required
           />
         </label>
+
         <label
-          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+          class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
         >
           Email
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="email"
             type="email"
             autocomplete="email"
             required
           />
         </label>
-        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
-          Tipo barca <span class="font-normal text-anchor-steel-grey"
-            >(opzionale)</span
-          >
+
+        <label class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy">
+          <span>
+            Tipo barca
+            <span class="font-normal text-anchor-steel-grey">
+              (opzionale)
+            </span>
+          </span>
+
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="boat_type"
           />
         </label>
-        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
-          Lunghezza <span class="font-normal text-anchor-steel-grey"
-            >(opzionale)</span
-          >
+
+        <label class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy">
+          <span>
+            Lunghezza
+            <span class="font-normal text-anchor-steel-grey">
+              (opzionale)
+            </span>
+          </span>
+
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="boat_length"
           />
         </label>
+
         <label
-          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+          class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
         >
-          Porto o marina <span class="font-normal text-anchor-steel-grey"
-            >(opzionale)</span
-          >
+          <span>
+            Porto o marina
+            <span class="font-normal text-anchor-steel-grey">
+              (opzionale)
+            </span>
+          </span>
+
           <input
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
             name="marina"
           />
         </label>
+
         <label
-          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+          class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
         >
           Servizio richiesto
+
           <select
-            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            class="min-h-12 w-full min-w-0 max-w-full rounded-anchor border border-anchor-light-grey bg-anchor-white px-4 text-base font-normal text-anchor-text"
             name="service"
             required
           >
@@ -150,23 +183,27 @@ import SectionHeader from "../ui/SectionHeader.astro";
             }
           </select>
         </label>
+
         <label
-          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+          class="grid min-w-0 gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
         >
           Descrizione del problema
+
           <textarea
-            class="min-h-36 rounded-anchor border border-anchor-light-grey px-4 py-3 text-base font-normal text-anchor-text"
+            class="min-h-36 w-full min-w-0 max-w-full resize-y rounded-anchor border border-anchor-light-grey px-4 py-3 text-base font-normal text-anchor-text"
             name="message"
             required></textarea>
         </label>
       </div>
+
       <button
         class="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-anchor bg-anchor-brass px-5 py-3 text-sm font-black text-anchor-navy transition hover:bg-anchor-navy hover:text-anchor-white md:w-auto"
         type="submit"
       >
         Invia richiesta
       </button>
-      <p class="mt-4 text-sm leading-6 text-anchor-steel-grey">
+
+      <p class="mt-4 break-words text-sm leading-6 text-anchor-steel-grey">
         Per richieste urgenti usa il contatto diretto via email o telefono
         appena disponibile.
       </p>
