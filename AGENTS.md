@@ -581,3 +581,47 @@ Append new rules to the Correction Log. Never rewrite historical entries to hide
 23. [WHEN:design] In the homepage “Compravendita e noleggio” strip, constrain and center the icon-copy-CTA group so the flexible text column does not create an oversized empty gap before the button.
 
 24. [WHEN:navigation] The primary navbar order is Servizi, Esperienze, Chi siamo, Contatti, followed by the “Richiedi controllo” CTA; Servizi, Chi siamo, Contatti and the CTA link to homepage sections, while Esperienze links to the standalone `/esperienze` route.
+
+25. [WHEN:images] The homepage photo wall must use a curated, deterministic selection of 20 optimized photographs on desktop and 8–12 on mobile; preserve the art-directed overlapping composition and never use runtime randomization or an infinite masonry gallery.
+
+26. [ALWAYS] Invoke the Anchor design and SEO reviewer agents only when the user explicitly requests them or when a substantial, high-risk change genuinely requires that specialist review; do not call them routinely for ordinary website changes, in order to control token usage. (supersedes #18)
+
+27. [WHEN:navigation] The standalone `/esperienze` page is a public, indexable destination containing the Sailing Experience banner and sailing-course sections; these blocks must not remain duplicated on the homepage.
+
+28. [WHEN:navigation] On `/esperienze`, keep the navbar permanently white with navy text, the dark logo and an outlined navy CTA; it must not use the transparent-over-navy variant at the top of the page.
+
+29. [WHEN:design] Immediately after the homepage photo wall, keep a static “Anchor Experience” promotional banner that links to `/esperienze`; it uses the experience hero composition without the Greece/Croatia crossfade or destination labels.
+
+30. [WHEN:design] The homepage Anchor Experience promo must have generous separation from the photo wall, with the experience logo displayed above the heading at twice its former size and clear vertical breathing room between logo, title, description and banner.
+
+31. [WHEN:design] The homepage Anchor Experience promo is an isolated dark-theme interlude with a full navy background, light typography, a white experience logo and very generous spacing above and below to separate it from both the photo wall and the following company section. (supersedes #30)
+
+32. [WHEN:design] Transition the homepage Anchor Experience interlude into and out of its navy theme with a soft white-to-navy gradient dissolve, while keeping the central content area on solid navy for contrast and focus.
+
+33. [WHEN:design] The Anchor Experience theme transition must be driven linearly by scroll position, changing the section, heading, intro and logo from the light theme to the dark theme as the section enters and back to light as it leaves; do not use a fixed gradient dissolve. (supersedes #32)
+
+34. [WHEN:design] Propagate the Anchor Experience scroll-driven light/dark transition to the immediately adjacent photo-wall and company sections, including their light-background typography, so the theme change flows continuously beyond the promo boundaries.
+
+35. [WHEN:design] For scroll-driven theme propagation across Astro components, target adjacent sections with explicit data attributes rather than DOM sibling assumptions, and ensure dynamic theme colors override static background and text utility classes; the previous sibling-based implementation failed to darken the photo wall and company sections.
+
+36. [WHEN:design] Initialize cross-section theme targets only after `DOMContentLoaded`, because an inline script emitted before following homepage sections cannot discover those later DOM nodes during parsing.
+
+37. [WHEN:design] The Anchor Experience dark-theme cycle extends through the homepage contact section and returns to light only as contacts leave the viewport; keep generous heading-to-banner spacing and reveal the experience banner once with a restrained opacity, translate and scale transition.
+
+38. [WHEN:design] Begin returning the homepage from dark to light as soon as the Anchor Experience section exits the viewport, then continue that linear lightening through the company section and into the beginning of contacts; do not keep the page fully dark until contacts end. (supersedes #37)
+
+39. [WHEN:design] Start the Anchor Experience return to the light theme before the section has fully exited the viewport, so the lightening is already perceptible while its final portion is still being scrolled.
+
+40. [WHEN:design] Start the Anchor Experience lightening earlier and complete it over a shorter scroll distance, reaching the light theme before the section has fully left the viewport. (supersedes #39)
+
+41. [WHEN:design] Keep the Anchor Experience entry transition progressive, but replace the exit curve with a controlled 280ms snap to the light theme when only 20% of the experience section remains visible. (supersedes #38, #40)
+
+42. [WHEN:design] The homepage Anchor Experience introduction uses two stacked blocks: a centered editorial text block followed by one full-width clickable photographic banner linking to `/esperienze`; do not use a split layout, logo, carousel, nested links or an internal card, and preserve the existing scroll-driven dark theme around the section.
+
+43. [WHEN:design] The homepage Anchor Experience introduction must not use an eyebrow; restore the large experience logo above the editorial title as the visual divider between the photo wall and experience content, while preserving its light/dark theme adaptation. (supersedes #42 only regarding the logo and eyebrow)
+
+44. [WHEN:design] The Anchor Experience introduction is a typography-only editorial manifesto: use the brass eyebrow, a narrow left-aligned column, intentionally short lines and widely separated text blocks; do not show the experience logo or a conventional compact description. (supersedes #43)
+
+45. [WHEN:design] Keep the editorial manifesto layout for Anchor Experience, but show the large adaptive experience logo and the “Anchor Experience” section title above it; do not use an eyebrow, and treat “Molla gli ormeggi.” as the manifesto opening rather than the section heading. (supersedes #44 regarding logo, eyebrow and heading)
+
+46. [WHEN:design] Keep the “Anchor Experience” heading on one line at every breakpoint, using fluid type sizing to prevent wrapping or horizontal overflow.

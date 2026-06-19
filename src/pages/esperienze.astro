@@ -1,33 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Button from "../components/ui/Button.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
+import SailingExperienceContent from "../components/sections/SailingExperienceContent.astro";
 
-const title = "Esperienze in barca | Anchor Service";
+const title = "Sailing Experience e corsi di vela | Anchor Service";
 const description =
-  "La nuova area Anchor Service dedicata alle esperienze in barca è in preparazione.";
+  "Esperienze in barca tra Grecia e Croazia e corsi di vela pratici, dal livello base all'avanzato, con Anchor Service.";
 ---
 
-<BaseLayout title={title} description={description} robots="noindex,follow">
-  <section
-    class="flex min-h-[72vh] items-center bg-anchor-navy px-5 pb-20 pt-32 text-anchor-white md:px-8 md:pt-36"
-  >
-    <div class="mx-auto w-full max-w-7xl">
-      <p
-        class="text-xs font-semibold uppercase tracking-[0.16em] text-anchor-brass"
-      >
-        Esperienze
-      </p>
-      <h1 class="mt-4 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-        Una nuova area dedicata alle esperienze in barca.
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-anchor-light-grey">
-        Stiamo preparando i contenuti di questa sezione. Nel frattempo puoi
-        conoscere i servizi tecnici o contattarci per una richiesta.
-      </p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <Button href="/#servizi" label="Torna ai servizi" />
-        <Button href="/#contatti" label="Contattaci" variant="ghost" />
-      </div>
-    </div>
-  </section>
+<BaseLayout title={title} description={description}>
+  <div class="bg-anchor-white pt-32">
+    <SailingExperienceContent />
+  </div>
+  <ContactSection />
 </BaseLayout>

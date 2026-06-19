@@ -7,7 +7,7 @@ const site = process.env.PUBLIC_SITE_URL || "https://anchorservice.it";
 export default defineConfig({
   site,
   trailingSlash: "never",
-  integrations: [sitemap({ filter: (page) => !page.endsWith("/esperienze") })],
+  integrations: [sitemap()],
   redirects: {
     "/servizi/rigging": "/servizi/rigging-standing-rigging",
     "/servizi/manutenzione-barche-a-vela": "/servizi/manutenzione-yacht",

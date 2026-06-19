@@ -1,0 +1,277 @@
+<section
+  class="anchor-experience-promo relative z-20 px-5 py-32 md:px-8 md:py-44"
+  data-anchor-experience
+>
+  <div class="anchor-experience-heading mx-auto max-w-[480px] text-left">
+    <span
+      class="relative mx-auto block h-32 w-32 md:h-40 md:w-40"
+      aria-hidden="true"
+    >
+      <img
+        class="anchor-experience-logo-light absolute inset-0 h-full w-full object-contain"
+        src="/images/anchorserviceexperience.png"
+        alt=""
+        width="160"
+        height="160"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="anchor-experience-logo-dark absolute inset-0 h-full w-full object-contain brightness-0 invert"
+        src="/images/anchorserviceexperience.png"
+        alt=""
+        width="160"
+        height="160"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+
+    <h2
+      class="mt-10 whitespace-nowrap text-center text-[clamp(1.75rem,8vw,3.75rem)] font-black leading-tight md:mt-12"
+    >
+      Anchor Experience
+    </h2>
+
+    <div
+      class="mt-12 space-y-12 text-3xl font-medium leading-[1.55] md:mt-16 md:space-y-16 md:text-4xl md:leading-[1.5]"
+    >
+      <p class="font-semibold">Molla gli ormeggi.</p>
+
+      <p>
+        <span class="block">Lascia a terra</span>
+        <span class="block">il rumore,</span>
+        <span class="block">la fretta,</span>
+        <span class="block">il superfluo.</span>
+      </p>
+
+      <p>
+        <span class="block">Il mare ti invita</span>
+        <span class="block">a rallentare,</span>
+        <span class="block">ad ascoltare,</span>
+        <span class="block">a respirare.</span>
+      </p>
+
+      <p>
+        <span class="block">A bordo,</span>
+        <span class="block">la navigazione</span>
+        <span class="block">diventa esperienza,</span>
+        <span class="block">presenza,</span>
+        <span class="block">scoperta.</span>
+      </p>
+
+      <p class="font-semibold">Un tempo diverso.</p>
+
+      <p>
+        <span class="block">Pi&ugrave; essenziale.</span>
+        <span class="block">Pi&ugrave; profondo.</span>
+        <strong class="block font-semibold">Pi&ugrave; vero.</strong>
+      </p>
+
+      <p>
+        <span class="block">Un viaggio</span>
+        <span class="block">da vivere fuori,</span>
+        <span class="block">per ritrovarsi dentro.</span>
+      </p>
+    </div>
+  </div>
+
+  <a
+    class="anchor-experience-banner group relative mx-auto mt-12 block aspect-[4/5] w-full max-w-7xl overflow-hidden rounded-[24px] text-anchor-white shadow-[0_30px_90px_rgb(11_31_51_/_0.16)] md:mt-14 md:aspect-[16/7]"
+    href="/esperienze"
+    aria-label="Scopri Anchor Experience"
+  >
+    <img
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+      src="/images/esperienze.jpeg"
+      alt="Barca a vela in navigazione sul mare vista dall'alto"
+      width="2048"
+      height="1536"
+      loading="lazy"
+      decoding="async"
+    />
+    <span
+      class="absolute inset-0 bg-gradient-to-t from-anchor-navy/75 via-anchor-navy/25 to-anchor-navy/5"
+      aria-hidden="true"></span>
+    <span
+      class="absolute inset-x-0 bottom-0 z-10 flex flex-col items-start p-6 sm:p-8 md:max-w-2xl md:p-12"
+    >
+      <span class="text-3xl font-black leading-tight md:text-5xl">
+        Scopri Anchor Experience
+      </span>
+      <span
+        class="mt-4 max-w-xl text-base leading-7 text-anchor-light-grey md:text-lg"
+      >
+        Esperienze in barca a vela tra navigazione, benessere e libertà.
+      </span>
+      <span
+        class="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-[24px] bg-anchor-brass px-6 py-3 text-sm font-black text-anchor-navy sm:w-auto"
+      >
+        Esplora le esperienze
+        <span
+          class="transition-transform duration-300 group-hover:translate-x-1"
+          aria-hidden="true">→</span
+        >
+      </span>
+    </span>
+  </a>
+</section>
+
+<script is:inline>
+  const initializeExperienceTheme = () => {
+    const experienceSection = document.querySelector(
+      "[data-anchor-experience]",
+    );
+
+    if (experienceSection instanceof HTMLElement) {
+      const surroundingSections = Array.from(
+        document.querySelectorAll("[data-experience-theme-neighbor]"),
+      ).filter((element) => element instanceof HTMLElement);
+
+      surroundingSections.forEach((section) => {
+        section.classList.add("experience-theme-neighbor");
+      });
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      let frameRequested = false;
+
+      const setThemeProgress = (progress, snapOut = false) => {
+        const value = `${progress * 100}%`;
+        experienceSection.style.setProperty("--experience-theme", value);
+        experienceSection.classList.toggle("experience-theme-snap", snapOut);
+        surroundingSections.forEach((section) => {
+          section.style.setProperty("--experience-theme", value);
+          section.classList.toggle("experience-theme-snap", snapOut);
+        });
+      };
+
+      const updateExperienceTheme = () => {
+        frameRequested = false;
+        const bounds = experienceSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const visibleHeight = Math.max(
+          0,
+          Math.min(bounds.bottom, viewportHeight) - Math.max(bounds.top, 0),
+        );
+        const visibleRatio = visibleHeight / bounds.height;
+        const snapOut = bounds.top < 0 && visibleRatio <= 0.2;
+        const entering = Math.min(
+          1,
+          Math.max(
+            0,
+            (viewportHeight * 0.9 - bounds.top) / (viewportHeight * 0.75),
+          ),
+        );
+        const progress = snapOut ? 0 : entering;
+
+        setThemeProgress(progress, snapOut && !reducedMotion.matches);
+      };
+
+      const requestThemeUpdate = () => {
+        if (frameRequested) return;
+        frameRequested = true;
+        window.requestAnimationFrame(updateExperienceTheme);
+      };
+
+      updateExperienceTheme();
+      window.addEventListener("scroll", requestThemeUpdate, { passive: true });
+      window.addEventListener("resize", requestThemeUpdate, { passive: true });
+      reducedMotion.addEventListener("change", requestThemeUpdate);
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeExperienceTheme, {
+      once: true,
+    });
+  } else {
+    initializeExperienceTheme();
+  }
+</script>
+
+<style>
+  .anchor-experience-promo {
+    --experience-theme: 0%;
+    background-color: color-mix(
+      in srgb,
+      var(--color-anchor-navy) var(--experience-theme),
+      var(--color-anchor-white)
+    );
+  }
+
+  .anchor-experience-promo.experience-theme-snap,
+  :global(.experience-theme-neighbor.experience-theme-snap) {
+    transition: background-color 280ms linear;
+  }
+
+  .anchor-experience-heading {
+    color: color-mix(
+      in srgb,
+      var(--color-anchor-white) var(--experience-theme),
+      var(--color-anchor-navy)
+    );
+  }
+
+  .anchor-experience-logo-light {
+    opacity: calc(100% - var(--experience-theme));
+  }
+
+  .anchor-experience-logo-dark {
+    opacity: var(--experience-theme);
+  }
+
+  .experience-theme-snap .anchor-experience-heading,
+  :global(.experience-theme-neighbor.experience-theme-snap .text-anchor-navy),
+  :global(
+    .experience-theme-neighbor.experience-theme-snap .text-anchor-steel-grey
+  ) {
+    transition: color 280ms linear;
+  }
+
+  .experience-theme-snap .anchor-experience-logo-light,
+  .experience-theme-snap .anchor-experience-logo-dark {
+    transition: opacity 280ms linear;
+  }
+
+  :global(.experience-theme-neighbor) {
+    --experience-theme: 0%;
+    background-color: color-mix(
+      in srgb,
+      var(--color-anchor-navy) var(--experience-theme),
+      var(--color-anchor-white)
+    ) !important;
+  }
+
+  :global(.experience-theme-neighbor .text-anchor-navy) {
+    color: color-mix(
+      in srgb,
+      var(--color-anchor-white) var(--experience-theme),
+      var(--color-anchor-navy)
+    ) !important;
+  }
+
+  :global(.experience-theme-neighbor .text-anchor-steel-grey) {
+    color: color-mix(
+      in srgb,
+      var(--color-anchor-light-grey) var(--experience-theme),
+      var(--color-anchor-steel-grey)
+    ) !important;
+  }
+
+  :global(.experience-theme-neighbor form.bg-anchor-white) {
+    background-color: color-mix(
+      in srgb,
+      var(--color-anchor-steel-blue) var(--experience-theme),
+      var(--color-anchor-white)
+    ) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anchor-experience-banner img,
+    .anchor-experience-banner span {
+      transition: none;
+    }
+  }
+</style>

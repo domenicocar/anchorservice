@@ -1,6 +1,14 @@
+---
+const isExperiencesPage = Astro.url.pathname === "/esperienze";
+---
+
 <header
   id="site-header"
-  class="fixed left-0 top-0 z-40 w-full bg-transparent transition-colors duration-300"
+  class:list={[
+    "fixed left-0 top-0 z-40 w-full bg-transparent transition-colors duration-300",
+    isExperiencesPage && "is-scrolled",
+  ]}
+  data-always-light={isExperiencesPage ? "true" : undefined}
 >
   <a
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-anchor focus:bg-anchor-brass focus:px-4 focus:py-2 focus:text-anchor-navy"
@@ -70,12 +78,18 @@
   </nav>
   <script is:inline>
     const header = document.getElementById("site-header");
-    const updateHeader = () => {
-      header?.classList.toggle("is-scrolled", window.scrollY > 12);
-    };
+    const alwaysLight = header?.dataset.alwaysLight === "true";
 
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
+    if (alwaysLight) {
+      header?.classList.add("is-scrolled");
+    } else {
+      const updateHeader = () => {
+        header?.classList.toggle("is-scrolled", window.scrollY > 12);
+      };
+
+      updateHeader();
+      window.addEventListener("scroll", updateHeader, { passive: true });
+    }
   </script>
   <style>
     #site-header.is-scrolled {
