@@ -11,11 +11,17 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const title = `${service.title} | Anchor Service Bari`;
-const description = `${service.summary} ${service.detail}`;
+const title = service.seo.title;
+const description = service.seo.description;
 const canonical = new URL(service.href, siteConfig.url).toString();
+const ogImage = new URL(service.image, siteConfig.url).toString();
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+>
   <ServiceDetailPage service={service} />
 </BaseLayout>

@@ -6,11 +6,13 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
 
 const title = "Servizi nautici per barche a vela | Anchor Service Bari";
 const description =
-  "Panoramica dei servizi Anchor Service: rigging, manutenzione barche a vela, cime, drizze, coperta, assistenza vele, yacht delivery e consulenza tecnica.";
+  "Rigging, manutenzione yacht, veleria, trasferimenti, ormeggio, gestione, perizie, compravendita e noleggio: scopri i servizi Anchor Service.";
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="bg-anchor-navy px-5 py-10 text-anchor-white md:px-8">
+  <section
+    class="bg-anchor-navy px-5 pb-10 pt-32 text-anchor-white md:px-8 md:pb-12 md:pt-36"
+  >
     <div class="mx-auto max-w-7xl">
       <p class="mb-5 text-sm font-bold text-anchor-brass">
         Servizi tecnici nautici
@@ -33,22 +35,36 @@ const description =
       />
       <div class="mt-12 grid gap-6">
         {
-          services.map((service, index) => (
-            <article class="grid gap-5 rounded-anchor-lg border border-anchor-light-grey bg-anchor-white p-6 md:grid-cols-[0.25fr_0.75fr] md:p-8">
+          services.map((service) => (
+            <article
+              class:list={[
+                "grid gap-5 rounded-anchor border bg-anchor-white p-6 md:grid-cols-[0.35fr_0.65fr] md:p-8",
+                service.featured
+                  ? "border-anchor-brass shadow-[0_16px_45px_rgb(11_31_51_/_0.08)]"
+                  : "border-anchor-light-grey",
+              ]}
+            >
               <div>
-                <p class="text-sm font-black text-anchor-brass">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h2 class="mt-4 text-2xl font-black text-anchor-navy">
+                {service.category && (
+                  <p class="text-xs font-semibold uppercase tracking-[0.14em] text-anchor-brass">
+                    {service.category}
+                  </p>
+                )}
+                <h2
+                  class:list={[
+                    "text-2xl font-semibold text-anchor-navy",
+                    service.category && "mt-3",
+                  ]}
+                >
                   {service.title}
                 </h2>
               </div>
               <div>
-                <p class="text-lg leading-8 text-anchor-steel-grey">
-                  {service.detail}
+                <p class="text-base leading-7 text-anchor-steel-grey">
+                  {service.shortDescription}
                 </p>
                 <a
-                  class="mt-5 inline-flex font-bold text-anchor-steel-blue hover:text-anchor-navy"
+                  class="mt-5 inline-flex min-h-11 items-center font-semibold text-anchor-steel-blue hover:text-anchor-navy"
                   href={service.href}
                 >
                   Vai al dettaglio

@@ -9,6 +9,7 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  robots?: string;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   description,
   canonical = new URL(Astro.url.pathname, siteConfig.url).toString(),
   ogImage,
+  robots,
 } = Astro.props;
 ---
 
@@ -27,6 +29,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.name} />

@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from "../../data/site";
+import { featuredService, siteConfig } from "../../data/site";
 ---
 
 <footer class="bg-anchor-navy text-anchor-white">
@@ -18,7 +18,9 @@ import { siteConfig } from "../../data/site";
       <ul class="mt-4 space-y-3 text-sm">
         <li><a class="hover:text-anchor-brass" href="/servizi">Servizi</a></li>
         <li>
-          <a class="hover:text-anchor-brass" href="/servizi/rigging">Rigging</a>
+          <a class="hover:text-anchor-brass" href={featuredService.href}
+            >Rigging</a
+          >
         </li>
         <li>
           <a class="hover:text-anchor-brass" href="/#contatti">Contatti</a>

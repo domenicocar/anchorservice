@@ -1,0 +1,35 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/servizi/rigging",
+      "destination": "/servizi/rigging-standing-rigging",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/manutenzione-barche-a-vela",
+      "destination": "/servizi/manutenzione-yacht",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/cime-drizze-coperta",
+      "destination": "/servizi/rigging-standing-rigging",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/assistenza-vele",
+      "destination": "/servizi/veleria-assistenza-vele",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/yacht-delivery-trasferimenti",
+      "destination": "/servizi/trasferimenti-trasporto-imbarcazioni",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/consulenza-tecnica",
+      "destination": "/servizi/gestione-perizie-intermediazione",
+      "permanent": true
+    }
+  ]
+}

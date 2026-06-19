@@ -35,14 +35,14 @@
           aria-hidden="true"
         />
       </span>
-      <span>Anchor Service</span>
+      <span class="hidden sm:inline">Anchor Service</span>
     </a>
     <div
       class="hidden items-center gap-7 text-sm font-bold text-anchor-white transition-colors md:flex"
     >
-      <a class="hover:text-anchor-brass" href="/servizi">Servizi</a>
-      <a class="hover:text-anchor-brass" href="/servizi/rigging">Rigging</a>
-      <a class="hover:text-anchor-brass" href="/#chi-siamo">Chi siamo</a>
+      <a class="hover:text-anchor-brass" href="/#servizi">Servizi</a>
+      <a class="hover:text-anchor-brass" href="/esperienze">Esperienze</a>
+      <a class="hover:text-anchor-brass" href="/#chi-siamo">Chi Siamo</a>
       <a class="hover:text-anchor-brass" href="/#contatti">Contatti</a>
     </div>
     <a
@@ -51,12 +51,22 @@
     >
       Richiedi controllo
     </a>
-    <a
-      class="rounded-anchor border border-anchor-white/70 bg-transparent px-4 py-3 text-sm font-bold text-anchor-white transition-colors md:hidden"
-      href="/#contatti"
+    <div
+      class="flex items-center gap-2 text-xs font-semibold text-anchor-white md:hidden"
     >
-      Contatti
-    </a>
+      <a
+        class="inline-flex min-h-11 items-center px-2 py-3 hover:text-anchor-brass"
+        href="/esperienze"
+      >
+        Esperienze
+      </a>
+      <a
+        class="inline-flex min-h-11 items-center rounded-anchor border border-anchor-white/70 bg-transparent px-3 py-3 transition-colors"
+        href="/#contatti"
+      >
+        Contatti
+      </a>
+    </div>
   </nav>
   <script is:inline>
     const header = document.getElementById("site-header");

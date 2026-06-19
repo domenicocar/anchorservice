@@ -567,3 +567,17 @@ Append new rules to the Correction Log. Never rewrite historical entries to hide
 16. [WHEN:design] For screenshot-driven section redesigns, match the provided mockup density and proportions first: avoid making cards taller, typography heavier, row separators stronger, or highlight borders weaker than the reference unless explicitly requested.
 
 17. [WHEN:design] In pricing sections with a recommended badge protruding above a card, reserve enough vertical gap after the section description so the badge does not visually attach to the heading area.
+
+18. [ALWAYS] Route website changes through both the Anchor design reviewer and the Anchor SEO reviewer before completion.
+
+19. [WHEN:components] Keep typography in service cards visually restrained: use regular, medium or semibold weights for card content and reserve heavier emphasis for the main section hierarchy.
+
+20. [WHEN:images] When replacing service-card images, preserve the established card layout, dimensions, grid and responsive behavior; adapt photographs to the existing image frames with cropping and object positioning, never adapt the layout to the source image proportions.
+
+21. [WHEN:images] The featured rigging image must use an explicit compact desktop frame height; never use percentage height against an auto-sized grid row because square or portrait source images can expand the entire services block.
+
+22. [WHEN:design] The homepage “Compravendita e noleggio” service must use a compact horizontal trust-strip layout with a nautical icon, concise copy and a navy CTA; do not use a large split image card for this block.
+
+23. [WHEN:design] In the homepage “Compravendita e noleggio” strip, constrain and center the icon-copy-CTA group so the flexible text column does not create an oversized empty gap before the button.
+
+24. [WHEN:navigation] The primary navbar order is Servizi, Esperienze, Chi siamo, Contatti, followed by the “Richiedi controllo” CTA; Servizi, Chi siamo, Contatti and the CTA link to homepage sections, while Esperienze links to the standalone `/esperienze` route.

@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { services, siteConfig } from "../data/site";
+import { featuredService, siteConfig } from "../data/site";
 import Button from "../components/ui/Button.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
-import ServiceCard from "../components/ui/ServiceCard.astro";
+import ServicesShowcase from "../components/sections/ServicesShowcase.astro";
 import TechnicalVisual from "../components/sections/TechnicalVisual.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 
@@ -86,7 +86,7 @@ const featureIcon =
   >
     <img
       class="absolute inset-0 h-full w-full object-cover"
-      src="/images/hero_anchor_service.jpeg"
+      src="/images/WhatsApp Image 2026-06-19 at 13.36.57.jpeg"
       alt=""
       width="2048"
       height="1024"
@@ -95,7 +95,7 @@ const featureIcon =
       decoding="async"
       aria-hidden="true"
     />
-    <div class="absolute inset-0 bg-black/35"></div>
+    <div class="absolute inset-0 bg-black/25"></div>
     <div class="relative z-10 mx-auto flex w-full max-w-7xl items-center">
       <div class="max-w-4xl pt-10">
         <h1
@@ -137,22 +137,21 @@ const featureIcon =
     </div>
   </section>
 
-  <section class="relative z-10 -mt-20 pb-20">
+  <section id="servizi" class="relative z-10 -mt-20 scroll-mt-24 pb-20">
     <div
       class="w-full overflow-hidden rounded-anchor bg-anchor-white px-5 py-12 shadow-[0_30px_90px_rgb(11_31_51_/_0.10)] md:px-8 md:py-14"
     >
+      <p
+        class="mb-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-anchor-brass"
+      >
+        Servizi tecnici
+      </p>
       <SectionHeader
         title="Interventi tecnici per la barca a vela"
-        description="Il rigging resta il servizio principale. Le attivita di manutenzione, coperta, vele e consulenza completano il supporto operativo."
+        description="Il rigging è il nostro servizio specialistico. Manutenzione, veleria, trasferimenti, ormeggio, gestione e consulenza completano un supporto nautico completo."
         align="center"
       />
-      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {
-          services.map((service, index) => (
-            <ServiceCard service={service} index={index} />
-          ))
-        }
-      </div>
+      <ServicesShowcase />
     </div>
   </section>
 
@@ -558,12 +557,12 @@ const featureIcon =
           <li
             class="rounded-anchor border border-anchor-light-grey bg-anchor-off-white p-4"
           >
-            Cime, drizze e coperta
+            Cime, drizze e manovre correnti
           </li>
         </ul>
         <div class="mt-8">
           <Button
-            href="/servizi/rigging"
+            href={featuredService.href}
             label="Vai alla pagina rigging"
             variant="secondary"
           />
@@ -600,7 +599,10 @@ const featureIcon =
     </div>
   </section>
 
-  <section id="chi-siamo" class="bg-anchor-white px-5 py-20 md:px-8">
+  <section
+    id="chi-siamo"
+    class="scroll-mt-24 bg-anchor-white px-5 py-20 md:px-8"
+  >
     <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
       <SectionHeader
         eyebrow="Chi siamo"
