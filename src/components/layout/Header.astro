@@ -1,0 +1,101 @@
+<header
+  id="site-header"
+  class="fixed left-0 top-0 z-40 w-full bg-transparent transition-colors duration-300"
+>
+  <a
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-anchor focus:bg-anchor-brass focus:px-4 focus:py-2 focus:text-anchor-navy"
+    href="#main-content"
+  >
+    Salta al contenuto
+  </a>
+  <nav
+    class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8"
+    aria-label="Navigazione principale"
+  >
+    <a
+      class="group flex items-center gap-3 text-lg font-black text-anchor-white transition-colors"
+      href="/"
+      aria-label="Anchor Service home"
+    >
+      <span class="relative block h-14 w-14 shrink-0">
+        <img
+          class="logo-white absolute inset-0 h-full w-full object-contain opacity-100 transition-opacity"
+          src="/images/anchorservicelogowhite.png"
+          alt=""
+          width="64"
+          height="64"
+          aria-hidden="true"
+        />
+        <img
+          class="logo-black absolute inset-0 h-full w-full object-contain opacity-0 transition-opacity"
+          src="/images/anchorservicelogoblack.png"
+          alt=""
+          width="64"
+          height="64"
+          aria-hidden="true"
+        />
+      </span>
+      <span>Anchor Service</span>
+    </a>
+    <div
+      class="hidden items-center gap-7 text-sm font-bold text-anchor-white transition-colors md:flex"
+    >
+      <a class="hover:text-anchor-brass" href="/servizi">Servizi</a>
+      <a class="hover:text-anchor-brass" href="/servizi/rigging">Rigging</a>
+      <a class="hover:text-anchor-brass" href="/#chi-siamo">Chi siamo</a>
+      <a class="hover:text-anchor-brass" href="/#contatti">Contatti</a>
+    </div>
+    <a
+      class="hidden min-h-11 items-center justify-center rounded-anchor border border-anchor-white/70 bg-transparent px-4 py-2 text-sm font-black text-anchor-white transition-colors hover:border-anchor-brass hover:text-anchor-brass md:inline-flex"
+      href="/#contatti"
+    >
+      Richiedi controllo
+    </a>
+    <a
+      class="rounded-anchor border border-anchor-white/70 bg-transparent px-4 py-3 text-sm font-bold text-anchor-white transition-colors md:hidden"
+      href="/#contatti"
+    >
+      Contatti
+    </a>
+  </nav>
+  <script is:inline>
+    const header = document.getElementById("site-header");
+    const updateHeader = () => {
+      header?.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  </script>
+  <style>
+    #site-header.is-scrolled {
+      border-bottom: 1px solid var(--color-anchor-light-grey);
+      background: rgb(255 255 255 / 0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    #site-header.is-scrolled a {
+      color: var(--color-anchor-navy);
+    }
+
+    #site-header.is-scrolled a:hover {
+      color: var(--color-anchor-steel-blue);
+    }
+
+    #site-header.is-scrolled .logo-white {
+      opacity: 0;
+    }
+
+    #site-header.is-scrolled .logo-black {
+      opacity: 1;
+    }
+
+    #site-header.is-scrolled a[href="/#contatti"] {
+      border-color: var(--color-anchor-navy);
+    }
+
+    #site-header.is-scrolled a[href="/#contatti"]:hover {
+      border-color: var(--color-anchor-steel-blue);
+    }
+  </style>
+</header>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services, siteConfig } from "../../data/site";
+import ServiceDetailPage from "../../components/sections/ServiceDetailPage.astro";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const title = `${service.title} | Anchor Service Bari`;
+const description = `${service.summary} ${service.detail}`;
+const canonical = new URL(service.href, siteConfig.url).toString();
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <ServiceDetailPage service={service} />
+</BaseLayout>

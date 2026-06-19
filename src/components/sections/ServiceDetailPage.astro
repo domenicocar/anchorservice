@@ -1,0 +1,72 @@
+---
+import type { Service } from "../../data/site";
+import { siteConfig } from "../../data/site";
+import Button from "../ui/Button.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import ServiceDetailHero from "./ServiceDetailHero.astro";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<ServiceDetailHero
+  eyebrow={service.title}
+  title={service.title}
+  description={service.detail}
+  image={service.image}
+  actions={[
+    { href: "/#contatti", label: "Richiedi informazioni" },
+    ...(siteConfig.phoneHref
+      ? [
+          {
+            href: siteConfig.phoneHref,
+            label: "Chiama ora",
+            variant: "ghost" as const,
+          },
+        ]
+      : []),
+  ]}
+/>
+
+<section class="px-5 py-20 md:px-8">
+  <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+    <SectionHeader
+      eyebrow="Dettaglio servizio"
+      title="Valutazione tecnica e intervento programmato"
+      description="Ogni richiesta viene letta partendo dallo stato reale della barca, dall'urgenza operativa e dalle priorita di sicurezza."
+    />
+    <div
+      class="rounded-anchor border border-anchor-light-grey bg-anchor-white p-6 text-lg leading-8 text-anchor-steel-grey md:p-8"
+    >
+      <p>{service.detail}</p>
+      <p class="mt-5">{service.summary}</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-anchor-white px-5 py-20 md:px-8">
+  <div
+    class="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-[1fr_auto]"
+  >
+    <SectionHeader
+      eyebrow="Contatto tecnico"
+      title="Descrivi la barca e il problema da valutare."
+      description="Indica tipo di barca, lunghezza, porto o marina e il servizio richiesto: ti aiuteremo a capire il primo passo utile."
+    />
+    <div class="flex flex-wrap gap-3 md:justify-end">
+      <Button href="/#contatti" label="Richiedi informazioni" />
+      {
+        siteConfig.whatsappHref && (
+          <Button
+            href={siteConfig.whatsappHref}
+            label="WhatsApp"
+            variant="whatsapp"
+          />
+        )
+      }
+    </div>
+  </div>
+</section>

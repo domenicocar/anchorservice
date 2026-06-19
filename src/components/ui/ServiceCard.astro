@@ -1,0 +1,74 @@
+---
+import type { Service } from "../../data/site";
+
+interface Props {
+  service: Service;
+  index: number;
+}
+
+const { service } = Astro.props;
+const href = service.href || "/servizi";
+---
+
+<article
+  class="service-reveal-card group relative aspect-video overflow-hidden rounded-anchor bg-anchor-brass shadow-anchor"
+>
+  <div
+    class="absolute inset-y-0 right-0 z-0 hidden items-center bg-anchor-brass p-5 text-anchor-navy md:flex md:w-[60%] lg:p-6"
+  >
+    <div class="max-w-full">
+      <h3 class="text-lg font-bold leading-tight lg:text-xl">
+        {service.title}
+      </h3>
+      <p class="mt-3 text-sm leading-5 text-anchor-navy/80">
+        {service.summary}
+      </p>
+      <a
+        class="mt-4 inline-flex min-h-9 items-center justify-center rounded-anchor bg-anchor-navy px-4 py-2 text-xs font-bold text-anchor-white transition-colors hover:bg-anchor-steel-blue"
+        href={href}
+      >
+        Vai al servizio
+      </a>
+    </div>
+  </div>
+
+  <a
+    class="service-reveal-image absolute inset-0 z-10 block overflow-hidden bg-anchor-navy transition-transform duration-500 ease-out"
+    href={href}
+    aria-label={`Vai al servizio ${service.title}`}
+  >
+    <img
+      class="h-full w-full object-cover opacity-90 transition duration-500 ease-out group-hover:scale-105 group-hover:opacity-100 group-focus-within:scale-105 group-focus-within:opacity-100"
+      src={service.image}
+      alt=""
+      width="720"
+      height="520"
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+    />
+    <span
+      class="absolute inset-0 bg-anchor-navy/35 transition-opacity duration-300 md:group-hover:opacity-0 md:group-focus-within:opacity-0"
+    ></span>
+
+    <span
+      class="absolute inset-x-0 bottom-0 p-5 text-anchor-white transition-opacity duration-300 md:p-6 md:group-hover:opacity-0 md:group-focus-within:opacity-0"
+    >
+      <span class="block text-2xl font-bold leading-tight md:text-3xl">
+        {service.title}
+      </span>
+      <span class="mt-3 block text-sm font-bold text-anchor-brass md:hidden">
+        Tocca per aprire
+      </span>
+    </span>
+  </a>
+</article>
+
+<style>
+  @media (min-width: 768px) {
+    .service-reveal-card:hover .service-reveal-image,
+    .service-reveal-card:focus-within .service-reveal-image {
+      transform: translateX(-62%);
+    }
+  }
+</style>

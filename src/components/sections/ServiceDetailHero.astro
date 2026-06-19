@@ -1,0 +1,68 @@
+---
+import Button from "../ui/Button.astro";
+
+interface HeroAction {
+  href: string;
+  label: string;
+  variant?: "primary" | "secondary" | "whatsapp" | "ghost";
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  imageAlt?: string;
+  actions?: HeroAction[];
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  image,
+  imageAlt = "",
+  actions = [],
+} = Astro.props;
+---
+
+<section
+  class="relative flex min-h-[620px] overflow-hidden bg-anchor-navy px-5 py-24 text-anchor-white md:min-h-[680px] md:px-8"
+>
+  <img
+    class="absolute inset-0 h-full w-full object-cover"
+    src={image}
+    alt={imageAlt}
+    width="1920"
+    height="1080"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    aria-hidden={imageAlt ? undefined : "true"}
+  />
+  <div class="absolute inset-0 bg-anchor-navy/35"></div>
+  <div class="relative z-10 mx-auto flex w-full max-w-7xl items-center">
+    <div class="max-w-4xl pt-10">
+      <p class="mb-5 text-sm font-bold text-anchor-brass">{eyebrow}</p>
+      <h1 class="max-w-4xl text-5xl font-black leading-[1.04] md:text-7xl">
+        {title}
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-anchor-light-grey">
+        {description}
+      </p>
+      {
+        actions.length > 0 && (
+          <div class="mt-8 flex flex-wrap gap-3">
+            {actions.map((action) => (
+              <Button
+                href={action.href}
+                label={action.label}
+                variant={action.variant}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+---
+import { siteConfig } from "../../data/site";
+---
+
+<footer class="bg-anchor-navy text-anchor-white">
+  <div
+    class="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.4fr_1fr_1fr] md:px-8"
+  >
+    <div>
+      <p class="text-xl font-black">Anchor Service</p>
+      <p class="mt-4 max-w-md text-sm leading-6 text-anchor-light-grey">
+        Rigging, manutenzione e assistenza tecnica per barche a vela. Contatti
+        rapidi per controlli, interventi e richieste di ispezione.
+      </p>
+    </div>
+    <div>
+      <p class="text-sm font-black uppercase text-anchor-brass">Navigazione</p>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li><a class="hover:text-anchor-brass" href="/servizi">Servizi</a></li>
+        <li>
+          <a class="hover:text-anchor-brass" href="/servizi/rigging">Rigging</a>
+        </li>
+        <li>
+          <a class="hover:text-anchor-brass" href="/#contatti">Contatti</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-black uppercase text-anchor-brass">Contatti</p>
+      <ul class="mt-4 space-y-3 text-sm text-anchor-light-grey">
+        <li>
+          {
+            siteConfig.phoneHref ? (
+              <a class="hover:text-anchor-white" href={siteConfig.phoneHref}>
+                {siteConfig.phoneLabel}
+              </a>
+            ) : (
+              siteConfig.phoneLabel
+            )
+          }
+        </li>
+        <li>
+          <a class="hover:text-anchor-white" href={`mailto:${siteConfig.email}`}
+            >{siteConfig.email}</a
+          >
+        </li>
+        <li>{siteConfig.location}</li>
+      </ul>
+    </div>
+  </div>
+  <div
+    class="border-t border-anchor-steel-blue px-5 py-5 text-center text-xs text-anchor-light-grey"
+  >
+    &copy; {new Date().getFullYear()} Anchor Service. Tutti i diritti riservati.
+  </div>
+</footer>

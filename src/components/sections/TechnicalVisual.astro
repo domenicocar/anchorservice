@@ -1,0 +1,42 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<div
+  class="relative min-h-[320px] overflow-hidden rounded-anchor-lg bg-anchor-navy text-anchor-white shadow-anchor"
+  aria-label={label}
+  role="img"
+>
+  <div
+    class="absolute inset-0 bg-[linear-gradient(135deg,var(--color-anchor-navy),var(--color-anchor-steel-blue))]"
+  >
+  </div>
+  <div class="absolute left-[18%] top-0 h-full w-px bg-anchor-light-grey/50">
+  </div>
+  <div
+    class="absolute left-[34%] top-0 h-full w-px rotate-[-12deg] bg-anchor-light-grey/40"
+  >
+  </div>
+  <div
+    class="absolute right-[22%] top-0 h-full w-px rotate-[15deg] bg-anchor-light-grey/45"
+  >
+  </div>
+  <div class="absolute bottom-20 left-10 right-10 h-px bg-anchor-light-grey/45">
+  </div>
+  <div
+    class="absolute bottom-10 left-16 right-16 h-12 rounded-anchor border border-anchor-light-grey/50"
+  >
+  </div>
+  <div
+    class="absolute bottom-24 left-1/2 h-40 w-3 -translate-x-1/2 rounded-anchor bg-anchor-light-grey/80"
+  >
+  </div>
+  <div
+    class="absolute bottom-28 left-1/2 h-4 w-4 -translate-x-1/2 rounded-anchor border-2 border-anchor-brass bg-anchor-navy"
+  >
+  </div>
+</div>

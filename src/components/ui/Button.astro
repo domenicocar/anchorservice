@@ -1,0 +1,32 @@
+---
+type Variant = "primary" | "secondary" | "whatsapp" | "ghost";
+
+interface Props {
+  href: string;
+  variant?: Variant;
+  label: string;
+}
+
+const { href, variant = "primary", label } = Astro.props;
+
+const variants: Record<Variant, string> = {
+  primary:
+    "bg-anchor-brass text-anchor-navy hover:bg-anchor-white focus-visible:outline-anchor-brass",
+  secondary:
+    "bg-anchor-navy text-anchor-white hover:bg-anchor-steel-blue focus-visible:outline-anchor-brass",
+  whatsapp:
+    "bg-anchor-whatsapp text-anchor-navy hover:bg-anchor-white focus-visible:outline-anchor-whatsapp",
+  ghost:
+    "border border-anchor-light-grey bg-transparent text-anchor-white hover:bg-anchor-white hover:text-anchor-navy focus-visible:outline-anchor-brass",
+};
+---
+
+<a
+  class:list={[
+    "inline-flex min-h-12 items-center justify-center rounded-anchor px-5 py-3 text-sm font-bold transition",
+    variants[variant],
+  ]}
+  href={href}
+>
+  {label}
+</a>

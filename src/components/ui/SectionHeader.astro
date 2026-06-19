@@ -1,0 +1,38 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  tone?: "light" | "dark";
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = "left",
+  tone = "light",
+} = Astro.props;
+const titleColor = tone === "dark" ? "text-anchor-white" : "text-anchor-navy";
+const descriptionColor =
+  tone === "dark" ? "text-anchor-light-grey" : "text-anchor-steel-grey";
+---
+
+<div class:list={["max-w-3xl", align === "center" && "mx-auto text-center"]}>
+  {
+    eyebrow && (
+      <p class="mb-3 text-xs font-bold uppercase text-anchor-brass">
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2 class:list={["text-3xl font-black md:text-5xl", titleColor]}>{title}</h2>
+  {
+    description && (
+      <p class:list={["mt-4 text-base leading-7 md:text-lg", descriptionColor]}>
+        {description}
+      </p>
+    )
+  }
+</div>

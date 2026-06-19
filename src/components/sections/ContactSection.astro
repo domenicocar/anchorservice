@@ -1,0 +1,171 @@
+---
+import { services, siteConfig } from "../../data/site";
+import Button from "../ui/Button.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+---
+
+<section id="contatti" class="bg-anchor-off-white px-5 py-20 md:px-8">
+  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+    <div>
+      <SectionHeader
+        eyebrow="Contatti"
+        title="Richiedi un controllo tecnico"
+        description="Raccontaci che cosa serve alla tua barca: un primo contatto aiuta a capire priorita, urgenza e tipo di intervento."
+      />
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          siteConfig.phoneHref && (
+            <Button
+              href={siteConfig.phoneHref}
+              label="Chiama ora"
+              variant="secondary"
+            />
+          )
+        }
+        {
+          siteConfig.whatsappHref && (
+            <Button
+              href={siteConfig.whatsappHref}
+              label="Scrivi su WhatsApp"
+              variant="whatsapp"
+            />
+          )
+        }
+        <Button
+          href={`mailto:${siteConfig.email}`}
+          label="Scrivi via email"
+          variant="secondary"
+        />
+      </div>
+      <dl class="mt-10 space-y-5 text-sm">
+        <div>
+          <dt class="font-black text-anchor-navy">Telefono</dt>
+          <dd class="mt-1 text-anchor-steel-grey">
+            {
+              siteConfig.phoneHref ? (
+                <a href={siteConfig.phoneHref}>{siteConfig.phoneLabel}</a>
+              ) : (
+                siteConfig.phoneLabel
+              )
+            }
+          </dd>
+        </div>
+        <div>
+          <dt class="font-black text-anchor-navy">Email</dt>
+          <dd class="mt-1 text-anchor-steel-grey">
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-black text-anchor-navy">Sede operativa</dt>
+          <dd class="mt-1 text-anchor-steel-grey">{siteConfig.location}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <form
+      class="rounded-anchor-lg border border-anchor-light-grey bg-anchor-white p-6 shadow-anchor md:p-8"
+      action={`mailto:${siteConfig.email}`}
+      method="post"
+      enctype="text/plain"
+    >
+      <div class="grid gap-5 md:grid-cols-2">
+        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+          Nome
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="name"
+            autocomplete="name"
+            required
+          />
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+          Telefono
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="phone"
+            autocomplete="tel"
+            required
+          />
+        </label>
+        <label
+          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+        >
+          Email
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+          Tipo barca <span class="font-normal text-anchor-steel-grey"
+            >(opzionale)</span
+          >
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="boat_type"
+          />
+        </label>
+        <label class="grid gap-2 text-sm font-bold text-anchor-navy">
+          Lunghezza <span class="font-normal text-anchor-steel-grey"
+            >(opzionale)</span
+          >
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="boat_length"
+          />
+        </label>
+        <label
+          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+        >
+          Porto o marina <span class="font-normal text-anchor-steel-grey"
+            >(opzionale)</span
+          >
+          <input
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="marina"
+          />
+        </label>
+        <label
+          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+        >
+          Servizio richiesto
+          <select
+            class="min-h-12 rounded-anchor border border-anchor-light-grey px-4 text-base font-normal text-anchor-text"
+            name="service"
+            required
+          >
+            <option value="">Seleziona un servizio</option>
+            {
+              services.map((service) => (
+                <option value={service.title}>{service.title}</option>
+              ))
+            }
+          </select>
+        </label>
+        <label
+          class="grid gap-2 text-sm font-bold text-anchor-navy md:col-span-2"
+        >
+          Descrizione del problema
+          <textarea
+            class="min-h-36 rounded-anchor border border-anchor-light-grey px-4 py-3 text-base font-normal text-anchor-text"
+            name="message"
+            required></textarea>
+        </label>
+      </div>
+      <button
+        class="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-anchor bg-anchor-brass px-5 py-3 text-sm font-black text-anchor-navy transition hover:bg-anchor-navy hover:text-anchor-white md:w-auto"
+        type="submit"
+      >
+        Invia richiesta
+      </button>
+      <p class="mt-4 text-sm leading-6 text-anchor-steel-grey">
+        Per richieste urgenti usa il contatto diretto via email o telefono
+        appena disponibile.
+      </p>
+    </form>
+  </div>
+</section>

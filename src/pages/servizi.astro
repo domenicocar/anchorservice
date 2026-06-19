@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { services, siteConfig } from "../data/site";
+import Button from "../components/ui/Button.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+
+const title = "Servizi nautici per barche a vela | Anchor Service Bari";
+const description =
+  "Panoramica dei servizi Anchor Service: rigging, manutenzione barche a vela, cime, drizze, coperta, assistenza vele, yacht delivery e consulenza tecnica.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-anchor-navy px-5 py-10 text-anchor-white md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <p class="mb-5 text-sm font-bold text-anchor-brass">
+        Servizi tecnici nautici
+      </p>
+      <h1 class="max-w-4xl text-5xl font-black leading-[1.04] md:text-7xl">
+        Servizi per barche a vela, con il rigging al centro.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 text-anchor-light-grey">
+        Una panoramica degli interventi tecnici disponibili per proprietari,
+        cantieri e marine.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-5 py-20 md:px-8">
+    <div class="mx-auto max-w-7xl">
+      <SectionHeader
+        title="Aree di intervento"
+        description="Ogni servizio parte da una valutazione concreta dello stato della barca e delle priorita operative."
+      />
+      <div class="mt-12 grid gap-6">
+        {
+          services.map((service, index) => (
+            <article class="grid gap-5 rounded-anchor-lg border border-anchor-light-grey bg-anchor-white p-6 md:grid-cols-[0.25fr_0.75fr] md:p-8">
+              <div>
+                <p class="text-sm font-black text-anchor-brass">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 class="mt-4 text-2xl font-black text-anchor-navy">
+                  {service.title}
+                </h2>
+              </div>
+              <div>
+                <p class="text-lg leading-8 text-anchor-steel-grey">
+                  {service.detail}
+                </p>
+                <a
+                  class="mt-5 inline-flex font-bold text-anchor-steel-blue hover:text-anchor-navy"
+                  href={service.href}
+                >
+                  Vai al dettaglio
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-anchor-white px-5 py-20 md:px-8">
+    <div
+      class="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-[1fr_auto]"
+    >
+      <SectionHeader
+        eyebrow="Quando contattarci"
+        title="Prima della stagione, prima di un trasferimento o quando noti usura."
+        description="Un controllo programmato aiuta a capire quali interventi sono urgenti e quali possono essere pianificati."
+      />
+      <div class="flex flex-wrap gap-3 md:justify-end">
+        {
+          siteConfig.phoneHref && (
+            <Button
+              href={siteConfig.phoneHref}
+              label="Chiama ora"
+              variant="secondary"
+            />
+          )
+        }
+        <Button href="/#contatti" label="Richiedi informazioni" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
